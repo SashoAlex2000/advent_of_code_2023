@@ -1,3 +1,12 @@
+import os
+import sys
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.abspath(os.path.join(script_dir, '..'))
+sys.path.append(root_dir)
+
+from utils.python_utils import file_reader, get_file_name_input_file
+
 
 test_input = """
 Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -7,13 +16,8 @@ Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
 Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 """
 
-FILE_NAME: str = 'input_2.txt'
-main_input: list[str] = []
-
-with open(FILE_NAME, 'r') as f:
-    for line in f:
-        main_input.append(line.rstrip())
-    
+FILE_NAME = get_file_name_input_file()
+main_input = file_reader(FILE_NAME)
 
 COLOR_TUPLE = (
     "red",
